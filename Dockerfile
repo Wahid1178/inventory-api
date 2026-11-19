@@ -1,4 +1,4 @@
-FROM php:8.3-apache
+FROM php:8.3-cli
  RUN apt-get update && apt-get install -y --no-install-recommends \
      git unzip libpq-dev libonig-dev libxml2-dev \
      && docker-php-ext-install pdo_pgsql mbstring dom xml \
@@ -12,4 +12,4 @@ FROM php:8.3-apache
         /etc/apache2/sites-available/000-default.conf \
      && chown -R www-data:www-data storage bootstrap/cache
  EXPOSE 80
- CMD ["apache2-foreground"] 
+ CMD ["apache2-foreground"]
