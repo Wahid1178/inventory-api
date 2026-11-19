@@ -17,4 +17,9 @@ foreach (['framework/cache/data', 'framework/sessions', 'framework/views'] as $d
 }
 $app->useStoragePath($storage);
 
+// Supaya Laravel tidak menganggap "/api" sebagai folder skrip
+$_SERVER['SCRIPT_NAME'] = '/index.php';
+$_SERVER['PHP_SELF'] = '/index.php';
+$_SERVER['SCRIPT_FILENAME'] = __DIR__.'/../public/index.php';
+
 $app->handleRequest(Request::capture());
